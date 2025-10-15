@@ -5,34 +5,114 @@
   <title>Butt Medicine</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #f9f9f9;
-      color: #333;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #ff6ec4, #7873f5);
+      color: #fff;
+      overflow-x: hidden;
     }
-    h1 {
+
+    header {
       text-align: center;
-      color: #444;
+      padding: 60px 20px;
+      background: rgba(0,0,0,0.4);
+      animation: fadeInDown 2s ease;
     }
+
+    h1 {
+      font-size: 4em;
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      text-shadow: 0 0 20px #ffcc00, 0 0 40px #ff6600;
+      animation: pulse 3s infinite;
+    }
+
+    @keyframes pulse {
+      0% { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff6600; }
+      50% { text-shadow: 0 0 30px #ffcc00, 0 0 60px #ff6600; }
+      100% { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff6600; }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-50px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     ul {
-      max-width: 600px;
-      margin: 20px auto;
+      list-style: none;
       padding: 0;
-      list-style-type: square;
+      max-width: 800px;
+      margin: 50px auto;
     }
+
     li {
-      margin: 10px 0;
+      background: rgba(255,255,255,0.1);
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 12px;
+      font-size: 1.5em;
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease, background 0.3s ease;
+    }
+
+    li:hover {
+      transform: scale(1.05);
+      background: rgba(255,255,255,0.2);
+    }
+
+    li::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      transform: rotate(45deg);
+      animation: shine 5s linear infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(45deg); }
+      100% { transform: translateX(100%) rotate(45deg); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: rgba(0,0,0,0.6);
+      font-size: 1em;
     }
   </style>
 </head>
 <body>
-  <h1>Butt Medicine</h1>
+  <header>
+    <h1>Butt Medicine</h1>
+    <p>Explore treatments for rectal comfort and care — presented in style.</p>
+  </header>
+
   <ul>
-    <li><strong>Topical creams and ointments</strong> – e.g., hydrocortisone cream for inflammation, lidocaine for pain relief.</li>
-    <li><strong>Suppositories</strong> – rectally inserted medications for hemorrhoids or inflammation.</li>
-    <li><strong>Stool softeners</strong> – oral medications that reduce straining and irritation.</li>
-    <li><strong>Sitz bath additives</strong> – soothing solutions to reduce discomfort and swelling.</li>
-    <li><strong>Anti-inflammatory agents</strong> – prescription or OTC drugs to reduce rectal inflammation.</li>
+    <li>💊 Topical creams & ointments — hydrocortisone, lidocaine</li>
+    <li>📦 Suppositories — soothing relief for inflammation</li>
+    <li>🥤 Stool softeners — reduce straining and irritation</li>
+    <li>🛁 Sitz bath additives — comfort and swelling reduction</li>
+    <li>🔥 Anti-inflammatory agents — targeted relief</li>
   </ul>
+
+  <footer>
+    &copy; 2025 Butt Medicine Awareness Project
+  </footer>
+
+  <script>
+    // Add a little interactivity: click an item to highlight it
+    document.querySelectorAll("li").forEach(item => {
+      item.addEventListener("click", () => {
+        alert("You selected: " + item.textContent.trim());
+      });
+    });
+  </script>
 </body>
 </html>
