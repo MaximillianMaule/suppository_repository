@@ -6,113 +6,95 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #ff6ec4, #7873f5);
-      color: #fff;
-      overflow-x: hidden;
+      font-family: Comic Sans MS, cursive, sans-serif;
+      background: repeating-linear-gradient(
+        45deg,
+        red,
+        red 20px,
+        yellow 20px,
+        yellow 40px,
+        lime 40px,
+        lime 60px,
+        cyan 60px,
+        cyan 80px
+      );
+      color: #000;
+      animation: bgflash 1s infinite;
     }
 
-    header {
-      text-align: center;
-      padding: 60px 20px;
-      background: rgba(0,0,0,0.4);
-      animation: fadeInDown 2s ease;
+    @keyframes bgflash {
+      0% { filter: hue-rotate(0deg); }
+      50% { filter: hue-rotate(180deg); }
+      100% { filter: hue-rotate(360deg); }
     }
 
     h1 {
-      font-size: 4em;
-      margin: 0;
+      font-size: 5em;
+      text-align: center;
       text-transform: uppercase;
-      letter-spacing: 5px;
-      text-shadow: 0 0 20px #ffcc00, 0 0 40px #ff6600;
-      animation: pulse 3s infinite;
+      animation: blink 0.5s infinite alternate;
+      color: magenta;
+      text-shadow: 5px 5px 0px lime, -5px -5px 0px cyan;
     }
 
-    @keyframes pulse {
-      0% { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff6600; }
-      50% { text-shadow: 0 0 30px #ffcc00, 0 0 60px #ff6600; }
-      100% { text-shadow: 0 0 10px #ffcc00, 0 0 20px #ff6600; }
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0; }
     }
 
-    @keyframes fadeInDown {
-      from { opacity: 0; transform: translateY(-50px); }
-      to { opacity: 1; transform: translateY(0); }
+    marquee {
+      font-size: 2em;
+      font-weight: bold;
+      background: black;
+      color: white;
+      padding: 10px;
     }
 
     ul {
       list-style: none;
       padding: 0;
-      max-width: 800px;
       margin: 50px auto;
+      max-width: 800px;
     }
 
     li {
-      background: rgba(255,255,255,0.1);
+      font-size: 2em;
       margin: 20px 0;
       padding: 20px;
-      border-radius: 12px;
-      font-size: 1.5em;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.3s ease, background 0.3s ease;
+      border: 5px dashed hotpink;
+      background: linear-gradient(90deg, orange, purple, lime, cyan);
+      animation: spin 2s linear infinite;
+      transform-origin: center;
     }
 
-    li:hover {
-      transform: scale(1.05);
-      background: rgba(255,255,255,0.2);
-    }
-
-    li::before {
-      content: "";
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-      transform: rotate(45deg);
-      animation: shine 5s linear infinite;
-    }
-
-    @keyframes shine {
-      0% { transform: translateX(-100%) rotate(45deg); }
-      100% { transform: translateX(100%) rotate(45deg); }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     footer {
       text-align: center;
-      padding: 30px;
-      background: rgba(0,0,0,0.6);
-      font-size: 1em;
+      padding: 20px;
+      font-size: 1.5em;
+      background: black;
+      color: yellow;
+      animation: blink 0.3s infinite alternate;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Butt Medicine</h1>
-    <p>Explore treatments for rectal comfort and care — presented in style.</p>
-  </header>
-
+  <marquee behavior="alternate">🔥🔥 Welcome to Butt Medicine Central 🔥🔥</marquee>
+  <h1>Butt Medicine</h1>
   <ul>
-    <li>💊 Topical creams & ointments — hydrocortisone, lidocaine</li>
-    <li>📦 Suppositories — soothing relief for inflammation</li>
-    <li>🥤 Stool softeners — reduce straining and irritation</li>
-    <li>🛁 Sitz bath additives — comfort and swelling reduction</li>
-    <li>🔥 Anti-inflammatory agents — targeted relief</li>
+    <li>💊 Topical Creams</li>
+    <li>📦 Suppositories</li>
+    <li>🥤 Stool Softeners</li>
+    <li>🛁 Sitz Bath Additives</li>
+    <li>🔥 Anti-inflammatory Agents</li>
   </ul>
-
+  <marquee direction="right" scrollamount="20">💥💥 BUY NOW 💥💥</marquee>
   <footer>
-    &copy; 2025 Butt Medicine Awareness Project
+    &copy; 2025 Butt Medicine Awareness Project — So Flashy It Hurts
   </footer>
-
-  <script>
-    // Add a little interactivity: click an item to highlight it
-    document.querySelectorAll("li").forEach(item => {
-      item.addEventListener("click", () => {
-        alert("You selected: " + item.textContent.trim());
-      });
-    });
-  </script>
 </body>
 </html>
