@@ -6,65 +6,50 @@
   <style>
     body {
       margin: 0;
-      font-family: Comic Sans MS, cursive, sans-serif;
+      font-family: "Comic Sans MS", cursive, sans-serif;
       background: repeating-linear-gradient(
-        45deg,
-        red,
-        red 20px,
-        yellow 20px,
-        yellow 40px,
-        lime 40px,
-        lime 60px,
-        cyan 60px,
-        cyan 80px
+        90deg,
+        lime,
+        lime 20px,
+        magenta 20px,
+        magenta 40px
       );
-      color: #000;
-      animation: bgflash 1s infinite;
+      animation: hueShift 2s infinite linear;
     }
 
-    @keyframes bgflash {
+    @keyframes hueShift {
       0% { filter: hue-rotate(0deg); }
-      50% { filter: hue-rotate(180deg); }
       100% { filter: hue-rotate(360deg); }
     }
 
     h1 {
-      font-size: 5em;
+      font-size: 4em;
       text-align: center;
-      text-transform: uppercase;
-      animation: blink 0.5s infinite alternate;
-      color: magenta;
-      text-shadow: 5px 5px 0px lime, -5px -5px 0px cyan;
+      animation: bounce 0.5s infinite alternate;
+      color: yellow;
+      text-shadow: 3px 3px red, -3px -3px blue;
     }
 
-    @keyframes blink {
-      from { opacity: 1; }
-      to { opacity: 0; }
-    }
-
-    marquee {
-      font-size: 2em;
-      font-weight: bold;
-      background: black;
-      color: white;
-      padding: 10px;
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(20px); }
     }
 
     ul {
       list-style: none;
       padding: 0;
       margin: 50px auto;
-      max-width: 800px;
+      max-width: 600px;
     }
 
     li {
       font-size: 2em;
-      margin: 20px 0;
+      margin: 20px;
       padding: 20px;
-      border: 5px dashed hotpink;
-      background: linear-gradient(90deg, orange, purple, lime, cyan);
-      animation: spin 2s linear infinite;
-      transform-origin: center;
+      border: 5px dotted cyan;
+      background: linear-gradient(45deg, orange, purple);
+      animation: spin 3s linear infinite;
+      cursor: pointer;
     }
 
     @keyframes spin {
@@ -72,18 +57,36 @@
       100% { transform: rotate(360deg); }
     }
 
+    button {
+      font-size: 1.5em;
+      padding: 15px 30px;
+      background: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.2s ease;
+    }
+
     footer {
       text-align: center;
       padding: 20px;
-      font-size: 1.5em;
       background: black;
-      color: yellow;
+      color: lime;
+      font-size: 1.2em;
       animation: blink 0.3s infinite alternate;
+    }
+
+    @keyframes blink {
+      from { opacity: 1; }
+      to { opacity: 0; }
     }
   </style>
 </head>
 <body>
-  <marquee behavior="alternate">🔥🔥 Welcome to Butt Medicine Central 🔥🔥</marquee>
   <h1>Butt Medicine</h1>
   <ul>
     <li>💊 Topical Creams</li>
@@ -92,9 +95,29 @@
     <li>🛁 Sitz Bath Additives</li>
     <li>🔥 Anti-inflammatory Agents</li>
   </ul>
-  <marquee direction="right" scrollamount="20">💥💥 BUY NOW 💥💥</marquee>
+
+  <button id="annoyBtn">Click Me!</button>
+
   <footer>
-    &copy; 2025 Butt Medicine Awareness Project — So Flashy It Hurts
+    &copy; 2025 Butt Medicine — The Worst Website Experience
   </footer>
+
+  <script>
+    // Make the button run away from the mouse
+    const btn = document.getElementById("annoyBtn");
+    document.addEventListener("mousemove", (e) => {
+      const x = Math.random() * window.innerWidth;
+      const y = Math.random() * window.innerHeight;
+      btn.style.left = x + "px";
+      btn.style.top = y + "px";
+    });
+
+    // Make list items scream alerts when clicked
+    document.querySelectorAll("li").forEach(item => {
+      item.addEventListener("click", () => {
+        alert("STOP CLICKING ME: " + item.textContent);
+      });
+    });
+  </script>
 </body>
 </html>
